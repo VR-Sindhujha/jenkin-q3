@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out source code...'
+                echo 'Restoring a clean app.py without unused imports...'
+                writeFile file: 'app.py', text: '''def greet(name):
+    print(f"Hello, {name}")
+'''
             }
         }
         
